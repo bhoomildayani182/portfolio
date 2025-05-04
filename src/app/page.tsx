@@ -5,6 +5,7 @@ import About from './sections/About';
 import Experience from './sections/Experience';
 import Education from './sections/Education';
 import Skills from './sections/Skills';
+import Certification from './sections/Certification';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Experience />
       <Education />
       <Skills />
+      <Certification />
     </main>
   );
 }
