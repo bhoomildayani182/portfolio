@@ -86,7 +86,7 @@ export default function Navbar() {
             <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center pt-8">
               <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white/50 shadow-2xl">
                 <Image 
-                  src="/assets/img/profile.svg" 
+                  src="/assets/img/profile.jpg" 
                   alt="Bhoomil Dayani"
                   width={200}
                   height={200} 

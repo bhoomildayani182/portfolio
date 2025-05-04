@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Education() {
   const [isVisible, setIsVisible] = useState(false);
@@ -44,12 +45,51 @@ export default function Education() {
     }
   };
 
+  const educationData = [
+    {
+      id: 0,
+      school: "CHAROTAR UNIVERSITY OF SCIENCE AND TECHNOLOGY",
+      degree: "Bachelor of Engineering - Information Technology",
+      period: "2020-2024",
+      grade: { label: "CGPA", value: "9.23" },
+      tags: ["Information Technology", "Programming", "Research"],
+      icon: "🎓", // You can replace this with actual image paths later
+      color: "from-primary-light/20 to-primary/5"
+    },
+    {
+      id: 1,
+      school: "TAPOVAN VIDHYALAYA",
+      degree: "High School - Science Stream",
+      period: "2018-2020",
+      grade: { label: "Percentage", value: "74.67%" },
+      tags: ["Science", "Mathematics", "Physics"],
+      icon: "🔬",
+      color: "from-secondary-light/20 to-secondary/5"
+    },
+    {
+      id: 2,
+      school: "BHULKA SAGAR VIDHYABHAVAN",
+      degree: "Secondary School Certificate (G.S.E.B)",
+      period: "2017-2018",
+      grade: { label: "Percentage", value: "85.21%" },
+      tags: ["Mathematics", "Science", "English"],
+      icon: "📚",
+      color: "from-accent/20 to-accent/5"
+    }
+  ];
+
   return (
     <section className="relative min-h-screen pt-24 py-16 px-6 md:px-12 lg:pl-80 bg-gradient-to-br from-background to-gray-light/30" id="education">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-60 right-10 md:right-40 w-64 h-64 bg-primary/10 rounded-full filter blur-3xl"></div>
         <div className="absolute bottom-60 left-10 md:left-40 w-72 h-72 bg-secondary/10 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-accent/5 rounded-full filter blur-3xl"></div>
+        
+        {/* Decorative shapes */}
+        <div className="absolute top-20 right-20 w-24 h-24 border-4 border-primary/10 rounded-lg rotate-12"></div>
+        <div className="absolute bottom-40 right-40 w-16 h-16 border-4 border-secondary/10 rounded-full"></div>
+        <div className="absolute top-1/3 left-20 w-12 h-12 bg-accent/10 rotate-45"></div>
       </div>
 
       {/* Content */}
@@ -60,7 +100,7 @@ export default function Education() {
         animate={isVisible ? "visible" : "hidden"}
       >
         {/* Header */}
-        <motion.div variants={itemVariants} className="mb-12 text-center">
+        <motion.div variants={itemVariants} className="mb-16 text-center">
           <h2 className="inline-block py-1 px-3 mb-3 text-sm font-medium rounded-full bg-primary/10 text-primary">Academic Background</h2>
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             My <span className="gradient-text">Education</span>
@@ -70,79 +110,88 @@ export default function Education() {
           </p>
         </motion.div>
         
-        {/* Education Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Charusat Education */}
-          <motion.div 
-            variants={itemVariants}
-            className="card bg-card-bg rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-xl"
-          >
-            <div className="relative">
-              <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 rounded-bl-lg">2020-2024</div>
-            </div>
-            <div className="p-6">
-              <br />
-              <h3 className="text-primary text-xl font-bold mb-3">CHAROTAR UNIVERSITY OF SCIENCE AND TECHNOLOGY</h3>
-              <p className="text-gray-dark mb-4">Bachelor of Engineering - Information Technology</p>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="font-semibold text-gray-dark">CGPA:</span>
-                <span className="text-primary font-bold text-lg">9.23</span>
+        {/* Education Cards - Desktop View */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
+          {educationData.map((item, index) => (
+            <motion.div 
+              key={index}
+              variants={itemVariants}
+              className={`card relative rounded-2xl bg-card-bg shadow-lg overflow-hidden transition-all duration-300 transform hover:shadow-xl`}
+            >
+              {/* Year badge at upper right */}
+              <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 rounded-bl-lg text-sm font-semibold z-10">
+                {item.period}
               </div>
-              <div className="flex flex-wrap gap-2">
-                <span className="bg-gray-light text-gray-dark px-3 py-1 rounded-full text-sm">Information Technology</span>
-                <span className="bg-gray-light text-gray-dark px-3 py-1 rounded-full text-sm">Programming</span>
-                <span className="bg-gray-light text-gray-dark px-3 py-1 rounded-full text-sm">Research</span>
+              
+              <div className="p-6 pt-4">
+                <div className="flex items-center gap-3 mb-4 mt-4">
+                  <div className="text-3xl">{item.icon}</div>
+                  <h3 className="text-primary text-xl font-bold">
+                    {item.school}
+                  </h3>
+                </div>
+                
+                <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-lg mb-4 text-sm font-medium">
+                  {item.degree}
+                </div>
+                
+                <div className="mb-5 flex items-center">
+                  <div className="flex items-center gap-2 bg-gray-light/50 rounded-lg px-3 py-2">
+                    <span className="font-semibold text-gray-dark">{item.grade.label}:</span>
+                    <span className="text-primary font-bold text-lg">{item.grade.value}</span>
+                  </div>
+                </div>
+                
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {item.tags.map((tag, i) => (
+                    <span key={i} className="bg-gray-light text-gray-dark px-3 py-1 rounded-full text-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          </motion.div>
-
-          {/* Tapovan Vidhyalaya */}
-          <motion.div 
-            variants={itemVariants}
-            className="card bg-card-bg rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-xl"
-          >
-            <div className="relative">
-              <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 rounded-bl-lg">2018-2020</div>
-            </div>
-            <div className="p-6">
-              <br />
-              <h3 className="text-primary text-xl font-bold mb-3">TAPOVAN VIDHYALAYA</h3>
-              <p className="text-gray-dark mb-4">High School - Science Stream</p>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="font-semibold text-gray-dark">Percentage:</span>
-                <span className="text-primary font-bold text-lg">74.67%</span>
+            </motion.div>
+          ))}
+        </div>
+        
+        {/* Mobile View */}
+        <div className="md:hidden space-y-6">
+          {educationData.map((item, index) => (
+            <motion.div 
+              key={index}
+              variants={itemVariants}
+              className="card bg-card-bg rounded-2xl shadow-lg overflow-hidden relative"
+            >
+              {/* Year badge at upper right */}
+              <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 rounded-bl-lg text-sm font-semibold z-10">
+                {item.period}
               </div>
-              <div className="flex flex-wrap gap-2">
-                <span className="bg-gray-light text-gray-dark px-3 py-1 rounded-full text-sm">Science</span>
-                <span className="bg-gray-light text-gray-dark px-3 py-1 rounded-full text-sm">Mathematics</span>
-                <span className="bg-gray-light text-gray-dark px-3 py-1 rounded-full text-sm">Physics</span>
+              
+              <div className="p-6 pt-4">
+                <div className="flex items-center gap-2 mb-3 mt-4">
+                  <div className="text-3xl">{item.icon}</div>
+                  <h3 className="text-primary text-xl font-bold">{item.school}</h3>
+                </div>
+                
+                <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-lg mb-4 text-sm font-medium">
+                  {item.degree}
+                </div>
+                
+                <div className="flex items-center gap-2 mb-4 bg-gray-light/50 w-fit rounded-lg px-3 py-2">
+                  <span className="font-semibold text-gray-dark">{item.grade.label}:</span>
+                  <span className="text-primary font-bold text-lg">{item.grade.value}</span>
+                </div>
+                
+                <div className="flex flex-wrap gap-2">
+                  {item.tags.map((tag, i) => (
+                    <span key={i} className="bg-gray-light text-gray-dark px-3 py-1 rounded-full text-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          </motion.div>
-
-          {/* Bhulka Sagar */}
-          <motion.div 
-            variants={itemVariants}
-            className="card bg-card-bg rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-xl"
-          >
-            <div className="relative">
-              <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 rounded-bl-lg">2017-2018</div>
-            </div>
-            <div className="p-6">
-              <br />
-              <h3 className="text-primary text-xl font-bold mb-3">BHULKA SAGAR VIDHYABHAVAN</h3>
-              <p className="text-gray-dark mb-4">Secondary School Certificate (G.S.E.B)</p>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="font-semibold text-gray-dark">Percentage:</span>
-                <span className="text-primary font-bold text-lg">85.21%</span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <span className="bg-gray-light text-gray-dark px-3 py-1 rounded-full text-sm">Mathematics</span>
-                <span className="bg-gray-light text-gray-dark px-3 py-1 rounded-full text-sm">Science</span>
-                <span className="bg-gray-light text-gray-dark px-3 py-1 rounded-full text-sm">English</span>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
     </section>
