@@ -96,7 +96,7 @@ export default function Projects() {
     {
       title: "DevOps Automation",
       subtitle: "SecureFlow CI/CD Pipeline",
-      category: "DevOps",
+      category: "DevOps & Cloud",
       image: "/assets/img/secure_CI_CD.png",
       description: [
         "Designed and implemented a fully automated CI/CD pipeline using GitHub Actions for version control and workflow automation",
@@ -111,8 +111,8 @@ export default function Projects() {
     },
     {
       title: "Quantum RUDDER",
-      subtitle: "Cloud & DevOps",
-      category: "Cloud & DevOps",
+      subtitle: "Cloud & DevOps Solution",
+      category: "DevOps & Cloud",
       image: "/assets/img/rudder.png",
       description: [
         "Modular Powerhouse: Microservices Architecture",
@@ -129,7 +129,7 @@ export default function Projects() {
     {
       title: "Clusterized Microservices Architecture",
       subtitle: "High-Availability Microservices Architecture with Auto-Scaling and Load Balancing",
-      category: "DevOps",
+      category: "DevOps & Cloud",
       image: "/assets/img/HA.png",
       description: [
         "Developed a high availability architecture for a multi-microservice system, ensuring seamless service delivery and fault tolerance. Converted all services into microservices, deployed across multiple servers, and created server images for rapid scalability",
@@ -144,7 +144,7 @@ export default function Projects() {
     {
       title: "Server Security hardening using Ansible",
       subtitle: "Automate server security configurations using Ansible to enforce consistent hardening policies across all systems",
-      category: "DevOps",
+      category: "DevOps & Cloud",
       image: "/assets/img/hardening.png",
       description: [
         "Led the implementation of comprehensive server security hardening using Ansible",
@@ -159,7 +159,7 @@ export default function Projects() {
     {
       title: "Activity Scheduling Automatic TimeTable Generator",
       subtitle: "A heuristic timetable optimization method to increase lesson planning productivity, solving the highly constrained N-P hard timetabling problem",
-      category: "Research",
+      category: "Web Dev",
       image: "/assets/img/timetable.jpg",
       description: [
         "Automated timetable generation",
@@ -170,6 +170,22 @@ export default function Projects() {
       links: {
         paper: "https://github.com/bhoomildayani182/FlightAware/files/11018317/ICOECA-2023.pdf",
         code: "https://github.com/bhoomildayani182/Activity_Scheduling_Automatic_TimeTable_Generator"
+      }
+    },
+    {
+      title: "Motion Detection System",
+      subtitle: "An advanced motion detection system using computer vision",
+      category: "Research",
+      image: "/assets/img/motion.jfif",
+      description: [
+        "Real-time motion detection",
+        "Computer vision implementation",
+        "Performance optimization"
+      ],
+      tags: ["OpenCV", "Python", "Computer Vision"],
+      links: {
+        paper: "https://github.com/bhoomildayani182/FlightAware/files/11018186/Emotion.Detection.Using.OpenCV.for.Facial.Recognition.pdf",
+        code: "https://github.com/bhoomildayani182/Motion_Detection"
       }
     },
     {
@@ -186,22 +202,6 @@ export default function Projects() {
       links: {
         report: "https://drive.google.com/file/d/1zhtky5sCRK3UjfR0nIa-tL7p3aaJOuKQ/view?usp=sharing",
         code: "https://github.com/bhoomildayani182/Activity_Logger_weetech_Internship"
-      }
-    },
-    {
-      title: "Motion Detection System",
-      subtitle: "An advanced motion detection system using computer vision",
-      category: "AI/ML",
-      image: "/assets/img/motion.jfif",
-      description: [
-        "Real-time motion detection",
-        "Computer vision implementation",
-        "Performance optimization"
-      ],
-      tags: ["OpenCV", "Python", "Computer Vision"],
-      links: {
-        paper: "https://github.com/bhoomildayani182/FlightAware/files/11018186/Emotion.Detection.Using.OpenCV.for.Facial.Recognition.pdf",
-        code: "https://github.com/bhoomildayani182/Motion_Detection"
       }
     }
   ];
@@ -296,9 +296,6 @@ export default function Projects() {
                     className="object-contain p-4 w-full h-full transition-transform duration-500 hover:scale-105"
                   />
                 </div>
-                <div className="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-lg text-sm font-medium shadow-md">
-                  {project.category}
-                </div>
               </div>
               
               <div className="p-5 flex flex-col flex-grow">
@@ -391,7 +388,7 @@ export default function Projects() {
                   <div className="mb-6 bg-gray-light/5 p-4 rounded-lg border border-gray-light/10">
                     <h4 className="text-lg font-semibold mb-3 text-foreground/90 flex items-center gap-2">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-primary">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3" />
                       </svg>
                       Key Features & Contributions
                     </h4>

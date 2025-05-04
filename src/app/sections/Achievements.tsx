@@ -97,7 +97,7 @@ export default function Achievements() {
         </motion.div>
         
         {/* Achievements Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {achievementsData.map((achievement, index) => (
             <motion.div 
               key={index}
@@ -105,50 +105,54 @@ export default function Achievements() {
               className="card bg-card-bg rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-xl h-full flex flex-col"
             >
               <div className="relative">
-                <div className="h-64 w-full bg-gray-50 overflow-hidden">
+                <div className="h-52 w-full bg-gray-50 flex items-center justify-center overflow-hidden">
                   <Image 
                     src={achievement.image} 
                     alt={achievement.title}
-                    fill
-                    className="object-cover transition-transform duration-700 hover:scale-105"
+                    width={400}
+                    height={240}
+                    className="object-contain p-4 w-full h-full transition-transform duration-500 hover:scale-105"
                   />
-                </div>
-                <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 rounded-bl-lg text-sm font-medium">
-                  {achievement.category}
                 </div>
               </div>
               
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold mb-3 text-foreground">{achievement.title}</h3>
-                <p className="text-gray-dark mb-4 text-sm">{achievement.description}</p>
+              <div className="p-5 flex flex-col flex-grow">
+                <h3 className="text-xl font-bold mb-3 text-foreground text-center">{achievement.title}</h3>
+                
+                <p className="text-gray-dark mb-3 text-sm">{achievement.description}</p>
                 
                 {achievement.projectDesc && (
-                  <div className="mb-4">
+                  <div className="mb-3">
                     <p className="text-gray-dark text-sm">{achievement.projectDesc}</p>
                   </div>
                 )}
                 
                 {achievement.quote && (
-                  <div className="mb-4 italic text-gray-dark text-sm border-l-2 border-primary/30 pl-3">
+                  <div className="mb-3 italic text-gray-dark text-sm border-l-2 border-primary/30 pl-3">
                     "{achievement.quote}"
                   </div>
                 )}
                 
-                <div className="flex flex-wrap gap-2 mb-4 mt-auto">
-                  {achievement.tags.map((tag, i) => (
-                    <span key={i} className="bg-gray-light/30 px-2 py-1 rounded-full text-xs text-gray-dark">
+                <div className="flex flex-wrap justify-center gap-2 mb-4">
+                  {achievement.tags.slice(0, 3).map((tag, i) => (
+                    <span key={i} className="bg-primary/5 px-2 py-1 rounded-full text-xs text-primary font-medium">
                       {tag}
                     </span>
                   ))}
+                  {achievement.tags.length > 3 && (
+                    <span className="bg-primary/5 px-2 py-1 rounded-full text-xs text-primary font-medium">
+                      +{achievement.tags.length - 3}
+                    </span>
+                  )}
                 </div>
                 
                 {achievement.link && (
-                  <div className="flex justify-center mt-4">
+                  <div className="flex justify-center items-center mt-auto">
                     <a 
                       href={achievement.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 py-2.5 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-300 flex items-center gap-2 text-sm justify-center"
+                      className="px-5 py-2.5 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-300 flex items-center gap-2 text-sm w-full justify-center"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
