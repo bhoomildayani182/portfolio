@@ -87,8 +87,6 @@ export default function Education() {
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-accent/5 rounded-full filter blur-3xl"></div>
         
         {/* Decorative shapes */}
-        <div className="absolute top-20 right-20 w-24 h-24 border-4 border-primary/10 rounded-lg rotate-12"></div>
-        <div className="absolute bottom-40 right-40 w-16 h-16 border-4 border-secondary/10 rounded-full"></div>
         <div className="absolute top-1/3 left-20 w-12 h-12 bg-accent/10 rotate-45"></div>
       </div>
 
