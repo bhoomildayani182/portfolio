@@ -41,11 +41,19 @@ export default function Navbar() {
     document.body.addEventListener('click', handleHashLinkClick);
     window.addEventListener('scroll', handleScroll);
     
+    // Prevent scrolling when menu is open
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
     return () => {
       document.body.removeEventListener('click', handleHashLinkClick);
       window.removeEventListener('scroll', handleScroll);
+      document.body.style.overflow = '';
     };
-  }, []);
+  }, [isMenuOpen]);
   
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -53,10 +61,19 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Mobile backdrop overlay */}
+      <div 
+        className={`lg:hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-30 transition-opacity duration-300 ${
+          isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setIsMenuOpen(false)}
+        aria-hidden="true"
+      ></div>
+      
       {/* Mobile nav toggle button */}
       <button 
         className={`lg:hidden fixed top-6 right-6 z-50 p-2 rounded-full shadow-lg backdrop-blur-md ${
-          scrolled ? 'bg-primary/80 text-white' : 'bg-white/80 text-primary'
+          scrolled || isMenuOpen ? 'bg-primary/80 text-white' : 'bg-white/80 text-primary'
         } transition-all duration-300`}
         type="button" 
         onClick={toggleMenu}
@@ -75,22 +92,22 @@ export default function Navbar() {
 
       {/* Sidebar navigation */}
       <aside 
-        className={`fixed top-0 left-0 h-screen lg:w-72 w-full z-40 transition-all duration-500 ease-in-out ${
-          isMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+        className={`fixed top-0 left-0 h-screen lg:w-72 w-5/6 max-w-sm z-40 transition-all duration-500 ease-in-out ${
+          isMenuOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full lg:translate-x-0 lg:shadow-xl'
         }`}
       >
-        <div className="h-full flex flex-col bg-gradient-to-b from-primary to-primary-dark text-white shadow-xl">
+        <div className="h-full flex flex-col bg-gradient-to-b from-primary to-primary-dark text-white">
           {/* Profile */}
           <div className="relative overflow-hidden h-64">
             <div className="absolute inset-0 bg-gradient-to-br from-secondary to-primary-dark opacity-80"></div>
             <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center pt-8">
-              <div className="w-35 h-55 rounded-full overflow-hidden border-4 border-white/50 shadow-2xl">
+              <div className="w-24 h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full overflow-hidden border-4 border-white/50 shadow-2xl">
                 <Image 
                   src="/assets/img/Profile.jpg" 
                   alt="Bhoomil Dayani"
-                  width={300}
-                  height={300} 
-                  className="object-cover"
+                  width={144}
+                  height={144} 
+                  className="object-cover w-full h-full"
                   priority
                 />
               </div>
@@ -217,7 +234,18 @@ export default function Navbar() {
             </ul>
           </nav>
           
-            
+          {/* Close button (visible only on mobile) */}
+          <div className="lg:hidden p-4 border-t border-white/10">
+            <button 
+              onClick={() => setIsMenuOpen(false)}
+              className="w-full py-2 px-4 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors duration-300 flex items-center justify-center gap-2"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              Close Menu
+            </button>
+          </div>
         </div>
       </aside>
     </>
