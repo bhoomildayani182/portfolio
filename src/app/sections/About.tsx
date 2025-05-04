@@ -31,7 +31,7 @@ export default function About() {
   };
 
   return (
-    <section className="relative min-h-screen pt-20 pb-16 px-6 md:px-12 lg:pl-80 bg-gradient-to-br from-background to-gray-light/30" id="about">
+    <section className="relative min-h-screen pt-20 pb-24 px-6 md:px-12 lg:pl-80 bg-gradient-to-br from-background to-gray-light/30" id="about">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-20 right-10 md:right-40 w-64 h-64 bg-primary/10 rounded-full filter blur-3xl"></div>
@@ -236,6 +236,7 @@ export default function About() {
           </motion.div>
         </div>
       </motion.div>
+      
     </section>
   );
 }

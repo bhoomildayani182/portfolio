@@ -17,8 +17,34 @@ export default function Navbar() {
       }
     };
     
+    // Add smooth scrolling to hash links
+    const handleHashLinkClick = (e: MouseEvent) => {
+      const target = e.target as Element;
+      const linkElement = target.closest('a[href^="#"]');
+      if (!linkElement) return;
+      
+      const targetId = linkElement.getAttribute('href')?.substring(1);
+      if (!targetId) return;
+      
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        e.preventDefault();
+        window.scrollTo({
+          top: targetElement.offsetTop,
+          behavior: 'smooth'
+        });
+        setIsMenuOpen(false);
+      }
+    };
+    
+    document.body.addEventListener('click', handleHashLinkClick);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    return () => {
+      document.body.removeEventListener('click', handleHashLinkClick);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
   
   const toggleMenu = () => {
