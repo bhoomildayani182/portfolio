@@ -72,6 +72,29 @@ html {
   background: var(--primary-dark);
 }
 
+/* Modal custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--gray-light);
+  border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
 /* Section transitions */
 section {
   transition: all 0.4s ease;

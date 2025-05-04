@@ -1,69 +1,167 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+
 export default function Achievements() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if element is in viewport
+      const element = document.getElementById('Achievements');
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        const isInViewport = rect.top <= window.innerHeight * 0.75;
+        setIsVisible(isInViewport);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        duration: 0.8,
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1, 
+      transition: { duration: 0.5 } 
+    }
+  };
+
+  const achievementsData = [
+    {
+      title: "Student Start-up and Innovation Policy (SSIP)",
+      category: "Hackathon",
+      image: "/assets/img/ssiphacathon.jpg",
+      description: "Had an amazing experience during my first ever 36 hours hackathon participation in SSIP hosted #aazadikaamritmahotsav hackathon organised by Education department of Gujarat Government.",
+      projectDesc: "A web portal for maintaining purchase data (Portalsology) using MERN stack.",
+      tags: ["MERN Stack", "Web Development", "Hackathon"],
+      link: "https://github.com/bhoomildayani182/Portalsology_Hackathon_2k22.git"
+    },
+    {
+      title: "Codepie 3.0 Participant",
+      category: "Programming",
+      image: "/assets/img/codepi3.png",
+      description: "I earned a certificate for my participation in Codepie 3.0 Competitive Programming Contest Organized by Faculty of Technology & Engineering in association with Codeing Ninjas and Aris Overseas on March 28, 2023.",
+      quote: "Demonstrated strong problem-solving skills and ability to work under pressure, showcasing proficiency in coding and programming.",
+      tags: ["Competitive Programming", "Problem Solving", "Coding"]
+    }
+  ];
+
   return (
-    <section className="min-h-screen py-16 px-6 md:px-12 lg:pl-80" id="Achievements">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 border-b pb-4">Achievements</h2>
+    <section className="relative min-h-screen pt-24 py-16 px-6 md:px-12 lg:pl-80 bg-gradient-to-br from-background to-gray-light/30" id="Achievements">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+        <div className="absolute top-60 right-10 md:right-40 w-64 h-64 bg-primary/10 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-60 right-10 md:right-40 w-72 h-72 bg-secondary/10 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-1/3 right-1/3 w-96 h-96 bg-accent/5 rounded-full filter blur-3xl"></div>
         
-        <div className="space-y-8">
-          <div className="bg-white shadow-md rounded-lg p-6 relative">
-            <div className="absolute top-6 right-6">
-              <span className="text-blue-600">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"></path>
-                </svg>
-              </span>
-            </div>
-            <h3 className="text-xl font-bold text-blue-600 mb-3">Cloud Cost Optimization Champion</h3>
-            <p className="text-gray-700">
-              Led a cloud cost optimization initiative that reduced monthly AWS costs by 45% while maintaining the same level of performance and reliability. Implemented reserved instances, spot instances, and resource right-sizing strategies.
-            </p>
-          </div>
-          
-          <div className="bg-white shadow-md rounded-lg p-6 relative">
-            <div className="absolute top-6 right-6">
-              <span className="text-blue-600">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
-                </svg>
-              </span>
-            </div>
-            <h3 className="text-xl font-bold text-blue-600 mb-3">Disaster Recovery Solution Award</h3>
-            <p className="text-gray-700">
-              Recognized for designing and implementing a robust disaster recovery solution that reduced the Recovery Time Objective (RTO) from 4 hours to less than 30 minutes, ensuring business continuity for critical applications.
-            </p>
-          </div>
-          
-          <div className="bg-white shadow-md rounded-lg p-6 relative">
-            <div className="absolute top-6 right-6">
-              <span className="text-blue-600">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z"></path>
-                </svg>
-              </span>
-            </div>
-            <h3 className="text-xl font-bold text-blue-600 mb-3">Security Excellence Recognition</h3>
-            <p className="text-gray-700">
-              Received recognition for implementing a comprehensive security framework that enhanced the organization's security posture, including automated security scanning in CI/CD pipelines, infrastructure hardening, and security monitoring.
-            </p>
-          </div>
-          
-          <div className="bg-white shadow-md rounded-lg p-6 relative">
-            <div className="absolute top-6 right-6">
-              <span className="text-blue-600">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path>
-                </svg>
-              </span>
-            </div>
-            <h3 className="text-xl font-bold text-blue-600 mb-3">Technical Documentation Champion</h3>
-            <p className="text-gray-700">
-              Spearheaded the creation of comprehensive technical documentation for DevOps processes, infrastructure architecture, and security controls, which became the gold standard for the organization's documentation practices.
-            </p>
-          </div>
-        </div>
+        {/* Decorative shapes */}
+        <div className="absolute top-1/3 right-20 w-12 h-12 bg-accent/10 rotate-45"></div>
+        <div className="absolute bottom-1/4 right-40 w-8 h-8 bg-primary/10 rounded-full"></div>
       </div>
+
+      {/* Content */}
+      <motion.div 
+        className="relative z-10 max-w-7xl mx-auto"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isVisible ? "visible" : "hidden"}
+      >
+        {/* Header */}
+        <motion.div variants={itemVariants} className="mb-16 text-center">
+          <h2 className="inline-block py-1 px-3 mb-3 text-sm font-medium rounded-full bg-primary/10 text-primary">Recognition & Accomplishments</h2>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            My <span className="gradient-text">Achievements</span>
+          </h1>
+          <p className="text-lg text-gray-dark max-w-3xl mx-auto">
+            Notable accomplishments and recognition received throughout my academic and professional journey.
+          </p>
+        </motion.div>
+        
+        {/* Achievements Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {achievementsData.map((achievement, index) => (
+            <motion.div 
+              key={index}
+              variants={itemVariants}
+              className="card bg-card-bg rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-xl h-full flex flex-col"
+            >
+              <div className="relative">
+                <div className="h-64 w-full bg-gray-50 overflow-hidden">
+                  <Image 
+                    src={achievement.image} 
+                    alt={achievement.title}
+                    fill
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                </div>
+                <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 rounded-bl-lg text-sm font-medium">
+                  {achievement.category}
+                </div>
+              </div>
+              
+              <div className="p-6 flex flex-col flex-grow">
+                <h3 className="text-xl font-bold mb-3 text-foreground">{achievement.title}</h3>
+                <p className="text-gray-dark mb-4 text-sm">{achievement.description}</p>
+                
+                {achievement.projectDesc && (
+                  <div className="mb-4">
+                    <p className="text-gray-dark text-sm">{achievement.projectDesc}</p>
+                  </div>
+                )}
+                
+                {achievement.quote && (
+                  <div className="mb-4 italic text-gray-dark text-sm border-l-2 border-primary/30 pl-3">
+                    "{achievement.quote}"
+                  </div>
+                )}
+                
+                <div className="flex flex-wrap gap-2 mb-4 mt-auto">
+                  {achievement.tags.map((tag, i) => (
+                    <span key={i} className="bg-gray-light/30 px-2 py-1 rounded-full text-xs text-gray-dark">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                
+                {achievement.link && (
+                  <div className="flex justify-center mt-4">
+                    <a 
+                      href={achievement.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2.5 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-300 flex items-center gap-2 text-sm justify-center"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                      </svg>
+                      View Project
+                    </a>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 } 
