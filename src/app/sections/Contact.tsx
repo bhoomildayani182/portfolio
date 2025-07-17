@@ -302,7 +302,7 @@ export default function Contact() {
                   <div>
                     <h4 className="text-lg font-semibold mb-1">Resume</h4>
                     <a 
-                      href="https://github.com/user-attachments/files/19447700/Bhoomil_Dayani_DevOps.pdf" 
+                      href="https://github.com/user-attachments/files/21301472/Bhoomil_Dayani_DevOps.pdf" 
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-primary hover:text-primary-dark transition-colors duration-300 flex items-center gap-1"
