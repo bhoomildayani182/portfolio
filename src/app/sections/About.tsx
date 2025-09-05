@@ -223,7 +223,7 @@ export default function About() {
             
             {/* Download resume button */}
             <a 
-              href="https://github.com/user-attachments/files/19447700/Bhoomil_Dayani_DevOps.pdf"
+              href="https://github.com/user-attachments/files/21301472/Bhoomil_Dayani_DevOps.pdf"
               download
               className="block w-full py-3 px-6 text-center rounded-lg bg-gradient-to-r from-primary to-primary-dark text-white font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
             >
