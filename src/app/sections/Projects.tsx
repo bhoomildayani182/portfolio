@@ -136,7 +136,7 @@ export default function Projects() {
         "Configured MySQL replication, file synchronization for consistency and implemented load balancing and N+1 redundancy",
         "Enabled vertical and horizontal auto-scaling to handle dynamic workloads seamlessly"
       ],
-      tags: ["High Availability", "Shell Scripting", "Microservices", "Locad Balancing", "Networking"],
+      tags: ["High Availability", "Shell Scripting", "Microservices", "Load Balancing", "Networking"],
       links: {
         code: "https://github.com/bhoomildayani182/Server-Security-Hardening.git"
       }
