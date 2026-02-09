@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
@@ -16,18 +16,18 @@ export default function Navbar() {
         setScrolled(false);
       }
     };
-    
+
     // Add smooth scrolling to hash links
     const handleHashLinkClick = (e: MouseEvent) => {
       const target = e.target as Element;
       const linkElement = target.closest('a[href^="#"]');
       if (!linkElement) return;
-      
+
       const targetId = linkElement.getAttribute('href')?.substring(1);
       if (!targetId) return;
-      
+
       const targetElement = document.getElementById(targetId);
-      
+
       if (targetElement) {
         e.preventDefault();
         window.scrollTo({
@@ -37,24 +37,24 @@ export default function Navbar() {
         setIsMenuOpen(false);
       }
     };
-    
+
     document.body.addEventListener('click', handleHashLinkClick);
     window.addEventListener('scroll', handleScroll);
-    
+
     // Prevent scrolling when menu is open
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-    
+
     return () => {
       document.body.removeEventListener('click', handleHashLinkClick);
       window.removeEventListener('scroll', handleScroll);
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
-  
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -62,22 +62,20 @@ export default function Navbar() {
   return (
     <>
       {/* Mobile backdrop overlay */}
-      <div 
-        className={`lg:hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-30 transition-opacity duration-300 ${
-          isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
+      <div
+        className={`lg:hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-30 transition-opacity duration-300 ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
         onClick={() => setIsMenuOpen(false)}
         aria-hidden="true"
       ></div>
-      
+
       {/* Mobile nav toggle button */}
-      <button 
-        className={`lg:hidden fixed top-6 right-6 z-50 p-2 rounded-full shadow-lg backdrop-blur-md ${
-          scrolled || isMenuOpen ? 'bg-primary/80 text-white' : 'bg-white/80 text-primary'
-        } transition-all duration-300`}
-        type="button" 
+      <button
+        className={`lg:hidden fixed top-6 right-6 z-50 p-2 rounded-full shadow-lg backdrop-blur-md ${scrolled || isMenuOpen ? 'bg-primary/80 text-white' : 'bg-white/80 text-primary'
+          } transition-all duration-300`}
+        type="button"
         onClick={toggleMenu}
-        aria-controls="navbarResponsive" 
+        aria-controls="navbarResponsive"
         aria-expanded={isMenuOpen}
         aria-label="Toggle navigation"
       >
@@ -91,10 +89,9 @@ export default function Navbar() {
       </button>
 
       {/* Sidebar navigation */}
-      <aside 
-        className={`fixed top-0 left-0 h-screen lg:w-72 w-5/6 max-w-sm z-40 transition-all duration-500 ease-in-out ${
-          isMenuOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full lg:translate-x-0 lg:shadow-xl'
-        }`}
+      <aside
+        className={`fixed top-0 left-0 h-screen lg:w-72 w-5/6 max-w-sm z-40 transition-all duration-500 ease-in-out ${isMenuOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full lg:translate-x-0 lg:shadow-xl'
+          }`}
       >
         <div className="h-full flex flex-col bg-gradient-to-b from-primary to-primary-dark text-white">
           {/* Profile */}
@@ -102,11 +99,11 @@ export default function Navbar() {
             <div className="absolute inset-0 bg-gradient-to-br from-secondary to-primary-dark opacity-80"></div>
             <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center pt-8">
               <div className="w-24 h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full overflow-hidden border-4 border-white/50 shadow-2xl">
-                <Image 
-                  src="/assets/img/Profile.jpg" 
+                <Image
+                  src="/assets/img/Profile.jpg"
                   alt="Bhoomil Dayani"
                   width={144}
-                  height={144} 
+                  height={144}
                   className="object-cover w-full h-full"
                   priority
                 />
@@ -114,16 +111,16 @@ export default function Navbar() {
               <h1 className="mt-4 text-xl font-bold text-white">Bhoomil Dayani</h1>
               <div className="flex items-center gap-1 mt-1 bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm">
                 <span className="inline-block w-2 h-2 rounded-full bg-green-400"></span>
-                <p className="text-sm font-medium">DevOps Engineer</p>
+                <p className="text-sm font-medium">Cloud DevOps Engineer</p>
               </div>
             </div>
           </div>
-          
+
           {/* Navigation Links */}
           <nav className="flex-grow py-6 px-6 overflow-y-auto">
             <ul className="space-y-1">
               <li>
-                <Link 
+                <Link
                   href="#about"
                   onClick={() => setIsMenuOpen(false)}
                   className="flex items-center gap-3 py-3 px-4 rounded-lg hover:bg-white/10 transition-all duration-300"
@@ -135,7 +132,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   href="#experience"
                   onClick={() => setIsMenuOpen(false)}
                   className="flex items-center gap-3 py-3 px-4 rounded-lg hover:bg-white/10 transition-all duration-300"
@@ -147,7 +144,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   href="#education"
                   onClick={() => setIsMenuOpen(false)}
                   className="flex items-center gap-3 py-3 px-4 rounded-lg hover:bg-white/10 transition-all duration-300"
@@ -159,7 +156,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   href="#skills"
                   onClick={() => setIsMenuOpen(false)}
                   className="flex items-center gap-3 py-3 px-4 rounded-lg hover:bg-white/10 transition-all duration-300"
@@ -171,7 +168,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   href="#project"
                   onClick={() => setIsMenuOpen(false)}
                   className="flex items-center gap-3 py-3 px-4 rounded-lg hover:bg-white/10 transition-all duration-300"
@@ -183,7 +180,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   href="#certification"
                   onClick={() => setIsMenuOpen(false)}
                   className="flex items-center gap-3 py-3 px-4 rounded-lg hover:bg-white/10 transition-all duration-300"
@@ -195,7 +192,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   href="#Achievements"
                   onClick={() => setIsMenuOpen(false)}
                   className="flex items-center gap-3 py-3 px-4 rounded-lg hover:bg-white/10 transition-all duration-300"
@@ -207,7 +204,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   href="#contact"
                   onClick={() => setIsMenuOpen(false)}
                   className="flex items-center gap-3 py-3 px-4 rounded-lg hover:bg-white/10 transition-all duration-300"
@@ -219,7 +216,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   href="https://bhoomildayaniblog.netlify.app"
                   onClick={() => setIsMenuOpen(false)}
                   className="flex items-center gap-3 py-3 px-4 rounded-lg hover:bg-white/10 transition-all duration-300"
@@ -233,10 +230,10 @@ export default function Navbar() {
               </li>
             </ul>
           </nav>
-          
+
           {/* Close button (visible only on mobile) */}
           <div className="lg:hidden p-4 border-t border-white/10">
-            <button 
+            <button
               onClick={() => setIsMenuOpen(false)}
               className="w-full py-2 px-4 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors duration-300 flex items-center justify-center gap-2"
             >

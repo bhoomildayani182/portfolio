@@ -37,11 +37,11 @@ export default function Projects() {
         setIsVisible(isInViewport);
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     // Initial check
     handleScroll();
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -52,7 +52,7 @@ export default function Projects() {
     } else {
       document.body.style.overflow = 'unset';
     }
-    
+
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -60,9 +60,9 @@ export default function Projects() {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { 
+    visible: {
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.8,
         staggerChildren: 0.15
       }
@@ -71,19 +71,19 @@ export default function Projects() {
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1, 
-      transition: { duration: 0.5 } 
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5 }
     }
   };
 
   const modalVariants = {
     hidden: { opacity: 0, scale: 0.9 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
-      transition: { duration: 0.3 } 
+      transition: { duration: 0.3 }
     },
     exit: {
       opacity: 0,
@@ -94,15 +94,16 @@ export default function Projects() {
 
   const projectsData: Project[] = [
     {
-      title: "DevOps Automation",
+      title: "Cloud-Native DevSecOps CI/CD Automation Platform",
       subtitle: "SecureFlow CI/CD Pipeline",
       category: "DevOps & Cloud",
       image: "/assets/img/secure_CI_CD.png",
       description: [
-        "Designed and implemented a fully automated CI/CD pipeline using GitHub Actions for version control and workflow automation",
-        "Integrated SonarQube for code quality, Snyk for vulnerability scanning, and Trivy for Docker image security",
-        "Automated Docker image creation, pushed to Docker Hub, and deployed using Argo CD to Kubernetes",
-        "Used Terraform to manage cloud infrastructure, ensuring scalable and reproducible environments. Delivered seamless deployments across development, UAT, and production while maintaining robust security and quality standards"
+        "Built an end-to-end DevSecOps CI/ CD platform using GitHub Actions, enabling continuous build, testing, security scanning, and deployment workflows.",
+        "Provisioned and managed AWS cloud infrastructure using Terraform, deploying microservices through infrastructure as code with a focus on scalability, reliability, and cost optimization.",
+        "Integrated SonarQube for static code quality analysis and Snyk and Trivy for continuous vulnerability scanning of application dependencies and container images.",
+        "Automation of Docker image building, tagging, and registry management, followed by GitOps-based deployments using Argo CD to Kubernetes clusters.",
+        "Established environment-specific deployment pipelines for development, UAT, and production, maintaining consistent configurations, security controls, and quality gates across all environments."
       ],
       tags: ["Docker", "Kubernetes", "Security Analysis", "Architecture", "CI/CD", "Terraform"],
       links: {
@@ -210,8 +211,8 @@ export default function Projects() {
   const categories = ['all', ...new Set(projectsData.map(proj => proj.category))];
 
   // Filter projects based on selected category
-  const filteredProjects = sortBy === 'all' 
-    ? projectsData 
+  const filteredProjects = sortBy === 'all'
+    ? projectsData
     : projectsData.filter(proj => proj.category === sortBy);
 
   return (
@@ -221,14 +222,14 @@ export default function Projects() {
         <div className="absolute top-60 right-10 md:right-40 w-64 h-64 bg-primary/10 rounded-full filter blur-3xl"></div>
         <div className="absolute bottom-60 right-10 md:right-40 w-72 h-72 bg-secondary/10 rounded-full filter blur-3xl"></div>
         <div className="absolute top-1/3 right-1/3 w-96 h-96 bg-accent/5 rounded-full filter blur-3xl"></div>
-        
+
         {/* Decorative shapes */}
         <div className="absolute top-1/3 right-20 w-12 h-12 bg-accent/10 rotate-45"></div>
         <div className="absolute bottom-1/4 right-40 w-8 h-8 bg-primary/10 rounded-full"></div>
       </div>
 
       {/* Content */}
-      <motion.div 
+      <motion.div
         className="relative z-10 max-w-7xl mx-auto"
         variants={containerVariants}
         initial="hidden"
@@ -244,7 +245,7 @@ export default function Projects() {
             A collection of technical projects that demonstrate my skills, expertise and problem-solving abilities.
           </p>
         </motion.div>
-        
+
         {/* Filter Controls */}
         <motion.div variants={itemVariants} className="flex justify-end mb-8">
           <div className="relative w-full max-w-xs">
@@ -276,11 +277,11 @@ export default function Projects() {
             </div>
           </div>
         </motion.div>
-        
+
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               variants={itemVariants}
               className="card bg-card-bg rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-xl cursor-pointer h-full flex flex-col"
@@ -288,8 +289,8 @@ export default function Projects() {
             >
               <div className="relative">
                 <div className="h-60 w-full bg-gray-50 flex items-center justify-center overflow-hidden">
-                  <Image 
-                    src={project.image} 
+                  <Image
+                    src={project.image}
                     alt={project.title}
                     width={400}
                     height={240}
@@ -297,10 +298,10 @@ export default function Projects() {
                   />
                 </div>
               </div>
-              
+
               <div className="p-5 flex flex-col flex-grow">
                 <h3 className="text-xl font-bold mb-3 text-foreground text-center">{project.title}</h3>
-                
+
                 <div className="flex flex-wrap justify-center gap-2 mb-4">
                   {project.tags.slice(0, 4).map((tag, i) => (
                     <span key={i} className="bg-primary/5 px-2 py-1 rounded-full text-xs text-primary font-medium">
@@ -313,7 +314,7 @@ export default function Projects() {
                     </span>
                   )}
                 </div>
-                
+
                 <div className="flex justify-center items-center mt-auto">
                   <button
                     onClick={(e) => {
@@ -339,7 +340,7 @@ export default function Projects() {
       <AnimatePresence>
         {selectedProject && (
           <div className="fixed inset-0 bg-background/95 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
-            <motion.div 
+            <motion.div
               className="bg-card-bg rounded-xl overflow-hidden max-w-4xl w-full max-h-[90vh] shadow-2xl flex flex-col relative border border-gray-light/20"
               variants={modalVariants}
               initial="hidden"
@@ -348,7 +349,7 @@ export default function Projects() {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close button absolute positioned */}
-              <button 
+              <button
                 className="absolute top-4 right-4 z-20 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
                 onClick={() => setSelectedProject(null)}
               >
@@ -359,8 +360,8 @@ export default function Projects() {
 
               {/* Modal Header with image */}
               <div className="relative h-72 md:h-80 w-full bg-gradient-to-b from-gray-50 to-gray-100">
-                <Image 
-                  src={selectedProject.image} 
+                <Image
+                  src={selectedProject.image}
                   alt={selectedProject.title}
                   fill
                   className="object-contain p-6 transition-all duration-700 hover:scale-105"
@@ -375,16 +376,16 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Modal Body with scrollable content */}
               <div className="p-6 overflow-y-auto custom-scrollbar">
                 <div className="mb-6">
                   <h3 className="text-xl font-bold mb-3 text-primary border-b border-gray-light/50 pb-2">{selectedProject.subtitle}</h3>
-                  
+
                   {selectedProject.longDescription && (
                     <p className="text-gray-dark mb-6 leading-relaxed">{selectedProject.longDescription}</p>
                   )}
-                  
+
                   <div className="mb-6 bg-gray-light/5 p-4 rounded-lg border border-gray-light/10">
                     <h4 className="text-lg font-semibold mb-3 text-foreground/90 flex items-center gap-2">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-primary">
@@ -401,7 +402,7 @@ export default function Projects() {
                       ))}
                     </ul>
                   </div>
-                  
+
                   <div className="mb-6">
                     <h4 className="text-lg font-semibold mb-3 text-foreground/90 flex items-center gap-2">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-primary">
@@ -418,11 +419,11 @@ export default function Projects() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Modal Footer with links */}
                 <div className="flex flex-wrap gap-3 pt-4 border-t border-gray-light/30">
                   {selectedProject.links.report && (
-                    <a 
+                    <a
                       href={selectedProject.links.report}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -434,9 +435,9 @@ export default function Projects() {
                       View Full Report
                     </a>
                   )}
-                  
+
                   {selectedProject.links.paper && (
-                    <a 
+                    <a
                       href={selectedProject.links.paper}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -448,9 +449,9 @@ export default function Projects() {
                       Read Research Paper
                     </a>
                   )}
-                  
+
                   {selectedProject.links.code && (
-                    <a 
+                    <a
                       href={selectedProject.links.code}
                       target="_blank"
                       rel="noopener noreferrer"
