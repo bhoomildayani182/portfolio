@@ -164,7 +164,7 @@ export default function About() {
               </ul>
 
               <a
-                href="https://github.com/user-attachments/files/25181427/Bhoomil-Dayani-Resume.pdf"
+                href="https://github.com/user-attachments/files/25255455/Bhoomil-Dayani-Resume.pdf"
                 download
                 className="group relative flex items-center justify-center gap-3 w-full py-4 px-6 rounded-xl bg-gradient-to-r from-primary to-primary-dark text-white font-semibold overflow-hidden shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300"
               >
