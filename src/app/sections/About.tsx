@@ -60,7 +60,13 @@ export default function About() {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center pt-24 pb-20 px-6 md:px-12 lg:pl-88 overflow-hidden" id="about">
+    <section
+      className="relative min-h-screen flex items-center pt-24 pb-20 px-6 md:px-12 lg:pl-88 overflow-hidden"
+      id="about"
+      aria-label="About Bhoomil Dayani"
+      itemScope
+      itemType="https://schema.org/Person"
+    >
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-[10%] right-[5%] w-[30rem] h-[30rem] bg-primary/10 rounded-full blur-[100px] animate-pulse"></div>
@@ -82,12 +88,18 @@ export default function About() {
             Available for Opportunities
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
-            Hi, I'm <span className="gradient-text text-glow">Bhoomil</span>
+          <h1
+            className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight"
+            itemProp="name"
+          >
+            Hi, I&apos;m{" "}
+            <span className="gradient-text text-glow">Bhoomil</span>
           </h1>
           <div className="flex items-center gap-3 text-2xl text-gray-400">
             <span className="h-0.5 bg-secondary/50 rounded-full"></span>
-            <span className="font-light">Cloud DevOps Engineer</span>
+            <span className="font-light" itemProp="jobTitle">
+              Cloud DevOps Engineer
+            </span>
           </div>
         </motion.div>
 
@@ -119,13 +131,25 @@ export default function About() {
                     key={link.name}
                     href={link.url}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener noreferrer me"
+                    aria-label={`Visit Bhoomil Dayani on ${link.name} (opens in new tab)`}
+                    itemProp="sameAs"
                     className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 transition-all duration-300 hover:-translate-y-1 group/btn"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-gray-400 group-hover/btn:text-white transition-colors">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                      className="text-gray-400 group-hover/btn:text-white transition-colors"
+                    >
                       {link.icon}
                     </svg>
-                    <span className="text-sm font-medium text-gray-300 group-hover/btn:text-white">{link.name}</span>
+                    <span className="text-sm font-medium text-gray-300 group-hover/btn:text-white">
+                      {link.name}
+                    </span>
                   </a>
                 ))}
               </div>
@@ -146,18 +170,27 @@ export default function About() {
 
               <ul className="space-y-5">
                 {[
-                  { label: 'Email', value: 'bhoomildayani05@email.com', href: 'mailto:bhoomildayani05@email.com' },
-                  { label: 'Phone', value: '(+91) 9033706595', href: 'tel:+919033706595' },
-                  { label: 'Location', value: 'Ahmedabad, Gujarat' },
+                  { label: 'Email', value: 'bhoomildayani05@gmail.com', href: 'mailto:bhoomildayani05@gmail.com', itemProp: 'email' },
+                  { label: 'Phone', value: '(+91) 9033706595', href: 'tel:+919033706595', itemProp: 'telephone' },
+                  { label: 'Location', value: 'Ahmedabad, Gujarat', itemProp: 'addressLocality' },
                 ].map((item, idx) => (
                   <li key={idx} className="flex flex-col gap-1 border-b border-white/5 last:border-0 pb-3 last:pb-0">
-                    <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{item.label}</span>
+                    <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                      {item.label}
+                    </span>
                     {item.href ? (
-                      <a href={item.href} className="text-gray-200 hover:text-primary transition-colors font-medium break-all">
+                      <a
+                        href={item.href}
+                        itemProp={item.itemProp}
+                        aria-label={`${item.label}: ${item.value}`}
+                        className="text-gray-200 hover:text-primary transition-colors font-medium break-all"
+                      >
                         {item.value}
                       </a>
                     ) : (
-                      <span className="text-gray-200 font-medium">{item.value}</span>
+                      <span className="text-gray-200 font-medium" itemProp={item.itemProp}>
+                        {item.value}
+                      </span>
                     )}
                   </li>
                 ))}
