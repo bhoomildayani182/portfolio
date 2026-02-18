@@ -170,7 +170,7 @@ export default function About() {
 
               <ul className="space-y-5">
                 {[
-                  { label: 'Email', value: 'bhoomildayani05@gmail.com', href: 'mailto:bhoomildayani05@gmail.com', itemProp: 'email' },
+                  { label: 'Email', value: 'hello@bhoomild.com', href: 'mailto:hello@bhoomild.com', itemProp: 'email' },
                   { label: 'Phone', value: '(+91) 9033706595', href: 'tel:+919033706595', itemProp: 'telephone' },
                   { label: 'Location', value: 'Ahmedabad, Gujarat', itemProp: 'addressLocality' },
                 ].map((item, idx) => (

@@ -5,8 +5,8 @@ export const SITE_URL = "https://bhoomildayani.dev";
 
 export const PERSON = {
     name: "Bhoomil Dayani",
-    jobTitle: "DevOps Engineer",
-    email: "bhoomildayani05@gmail.com",
+    jobTitle: "DevOps & Cloud Engineer",
+    email: "hello@bhoomild.com",
     phone: "+919033706595",
     location: {
         city: "Ahmedabad",
@@ -23,19 +23,20 @@ export const PERSON = {
 } as const;
 
 // ─── Keyword Clusters ─────────────────────────────────────────────────────────
-// Primary — highest search intent, used in title + description
 export const PRIMARY_KEYWORDS = [
     "DevOps Engineer",
+    "Cloud Engineer",
+    "DevOps and Cloud Engineer",
     "DevOps Engineer India",
+    "Cloud Engineer India",
     "DevOps Engineer Ahmedabad",
     "AWS DevOps Engineer",
-    "Kubernetes DevOps Engineer",
+    "Kubernetes Cloud Engineer",
     "Cloud DevOps Engineer",
     "DevSecOps Engineer",
     "CI/CD Expert",
 ];
 
-// Secondary — skill-level keywords for body copy density
 export const SECONDARY_KEYWORDS = [
     "Kubernetes",
     "Docker",
@@ -59,9 +60,8 @@ export const SECONDARY_KEYWORDS = [
     "SOC 2 Compliance",
 ];
 
-// Long-tail — blog / content SEO targets
 export const LONGTAIL_KEYWORDS = [
-    "DevOps Engineer portfolio India",
+    "DevOps Cloud Engineer portfolio India",
     "AWS Cloud Practitioner DevOps",
     "Kubernetes container orchestration expert",
     "GitHub Actions CI/CD pipeline automation",
@@ -79,13 +79,13 @@ export const ALL_KEYWORDS = [
 
 // ─── SEO Copy ─────────────────────────────────────────────────────────────────
 export const SEO = {
-    titleTemplate: "%s | Bhoomil Dayani — DevOps Engineer",
+    titleTemplate: "%s | Bhoomil Dayani",
     defaultTitle:
-        "Bhoomil Dayani | DevOps Engineer — Kubernetes, AWS, CI/CD & DevSecOps",
+        "Bhoomil Dayani | DevOps & Cloud Engineer — Kubernetes, AWS, CI/CD & DevSecOps",
     description:
-        "Bhoomil Dayani is a DevOps Engineer based in Ahmedabad, India, specializing in Kubernetes, AWS, Terraform, CI/CD pipelines, GitHub Actions, and DevSecOps. AWS Certified Cloud Practitioner & Azure Fundamentals certified.",
+        "Bhoomil Dayani is a DevOps & Cloud Engineer based in Ahmedabad, India, specializing in Kubernetes, AWS, Terraform, CI/CD pipelines, GitHub Actions, and DevSecOps. AWS Certified Cloud Practitioner & Azure Fundamentals certified.",
     ogImage: `${SITE_URL}/og-image.png`,
     ogImageAlt:
-        "Bhoomil Dayani — DevOps Engineer | Kubernetes, AWS, CI/CD, DevSecOps",
+        "Bhoomil Dayani — DevOps & Cloud Engineer | Kubernetes, AWS, CI/CD, DevSecOps",
     twitterHandle: "@BhoomilDayani",
 } as const;
