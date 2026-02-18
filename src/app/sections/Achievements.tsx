@@ -17,19 +17,19 @@ export default function Achievements() {
         setIsVisible(isInViewport);
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     // Initial check
     handleScroll();
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { 
+    visible: {
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.8,
         staggerChildren: 0.15
       }
@@ -38,10 +38,10 @@ export default function Achievements() {
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1, 
-      transition: { duration: 0.5 } 
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5 }
     }
   };
 
@@ -66,20 +66,20 @@ export default function Achievements() {
   ];
 
   return (
-    <section className="relative min-h-screen pt-24 py-16 px-6 md:px-12 lg:pl-80 bg-gradient-to-br from-background to-gray-light/30" id="Achievements">
+    <section className="relative min-h-screen pt-24 py-16 px-6 md:px-12 bg-gradient-to-br from-background to-gray-light/30" id="Achievements">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-60 right-10 md:right-40 w-64 h-64 bg-primary/10 rounded-full filter blur-3xl"></div>
         <div className="absolute bottom-60 right-10 md:right-40 w-72 h-72 bg-secondary/10 rounded-full filter blur-3xl"></div>
         <div className="absolute top-1/3 right-1/3 w-96 h-96 bg-accent/5 rounded-full filter blur-3xl"></div>
-        
+
         {/* Decorative shapes */}
         <div className="absolute top-1/3 right-20 w-12 h-12 bg-accent/10 rotate-45"></div>
         <div className="absolute bottom-1/4 right-40 w-8 h-8 bg-primary/10 rounded-full"></div>
       </div>
 
       {/* Content */}
-      <motion.div 
+      <motion.div
         className="relative z-10 max-w-7xl mx-auto"
         variants={containerVariants}
         initial="hidden"
@@ -95,19 +95,19 @@ export default function Achievements() {
             Notable accomplishments and recognition received throughout my academic and professional journey.
           </p>
         </motion.div>
-        
+
         {/* Achievements Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {achievementsData.map((achievement, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               variants={itemVariants}
               className="card bg-card-bg rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-xl h-full flex flex-col"
             >
               <div className="relative">
                 <div className="h-52 w-full bg-gray-50 flex items-center justify-center overflow-hidden">
-                  <Image 
-                    src={achievement.image} 
+                  <Image
+                    src={achievement.image}
                     alt={achievement.title}
                     width={400}
                     height={240}
@@ -115,24 +115,24 @@ export default function Achievements() {
                   />
                 </div>
               </div>
-              
+
               <div className="p-5 flex flex-col flex-grow">
                 <h3 className="text-xl font-bold mb-3 text-foreground text-center">{achievement.title}</h3>
-                
+
                 <p className="text-gray-dark mb-3 text-sm">{achievement.description}</p>
-                
+
                 {achievement.projectDesc && (
                   <div className="mb-3">
                     <p className="text-gray-dark text-sm">{achievement.projectDesc}</p>
                   </div>
                 )}
-                
+
                 {achievement.quote && (
                   <div className="mb-3 italic text-gray-dark text-sm border-l-2 border-primary/30 pl-3">
                     "{achievement.quote}"
                   </div>
                 )}
-                
+
                 <div className="flex flex-wrap justify-center gap-2 mb-4">
                   {achievement.tags.slice(0, 3).map((tag, i) => (
                     <span key={i} className="bg-primary/5 px-2 py-1 rounded-full text-xs text-primary font-medium">
@@ -145,10 +145,10 @@ export default function Achievements() {
                     </span>
                   )}
                 </div>
-                
+
                 {achievement.link && (
                   <div className="flex justify-center items-center mt-auto">
-                    <a 
+                    <a
                       href={achievement.link}
                       target="_blank"
                       rel="noopener noreferrer"

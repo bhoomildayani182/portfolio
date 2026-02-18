@@ -16,19 +16,19 @@ export default function Education() {
         setIsVisible(isInViewport);
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     // Initial check
     handleScroll();
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { 
+    visible: {
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.8,
         staggerChildren: 0.3
       }
@@ -37,10 +37,10 @@ export default function Education() {
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1, 
-      transition: { duration: 0.5 } 
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5 }
     }
   };
 
@@ -78,19 +78,19 @@ export default function Education() {
   ];
 
   return (
-    <section className="relative min-h-screen pt-24 py-16 px-6 md:px-12 lg:pl-80 bg-gradient-to-br from-background to-gray-light/30" id="education">
+    <section className="relative min-h-screen pt-24 py-16 px-6 md:px-12 bg-gradient-to-br from-background to-gray-light/30" id="education">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-60 right-10 md:right-40 w-64 h-64 bg-primary/10 rounded-full filter blur-3xl"></div>
         <div className="absolute bottom-60 left-10 md:left-40 w-72 h-72 bg-secondary/10 rounded-full filter blur-3xl"></div>
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-accent/5 rounded-full filter blur-3xl"></div>
-        
+
         {/* Decorative shapes */}
         <div className="absolute top-1/3 left-20 w-12 h-12 bg-accent/10 rotate-45"></div>
       </div>
 
       {/* Content */}
-      <motion.div 
+      <motion.div
         className="relative z-10 max-w-6xl mx-auto"
         variants={containerVariants}
         initial="hidden"
@@ -106,11 +106,11 @@ export default function Education() {
             My academic journey that has shaped my knowledge and expertise.
           </p>
         </motion.div>
-        
+
         {/* Education Cards - Desktop View */}
         <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
           {educationData.map((item, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               variants={itemVariants}
               className={`card relative rounded-2xl bg-card-bg shadow-lg overflow-hidden transition-all duration-300 transform hover:shadow-xl`}
@@ -119,7 +119,7 @@ export default function Education() {
               <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 rounded-bl-lg text-sm font-semibold z-10">
                 {item.period}
               </div>
-              
+
               <div className="p-6 pt-4">
                 <div className="flex items-center gap-3 mb-4 mt-4">
                   <div className="text-3xl">{item.icon}</div>
@@ -127,18 +127,18 @@ export default function Education() {
                     {item.school}
                   </h3>
                 </div>
-                
+
                 <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-lg mb-4 text-sm font-medium">
                   {item.degree}
                 </div>
-                
+
                 <div className="mb-5 flex items-center">
                   <div className="flex items-center gap-2 bg-gray-light/50 rounded-lg px-3 py-2">
                     <span className="font-semibold text-gray-dark">{item.grade.label}:</span>
                     <span className="text-primary font-bold text-lg">{item.grade.value}</span>
                   </div>
                 </div>
-                
+
                 <div className="flex flex-wrap gap-2 mt-3">
                   {item.tags.map((tag, i) => (
                     <span key={i} className="bg-gray-light text-gray-dark px-3 py-1 rounded-full text-sm">
@@ -150,11 +150,11 @@ export default function Education() {
             </motion.div>
           ))}
         </div>
-        
+
         {/* Mobile View */}
         <div className="md:hidden space-y-6">
           {educationData.map((item, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               variants={itemVariants}
               className="card bg-card-bg rounded-2xl shadow-lg overflow-hidden relative"
@@ -163,22 +163,22 @@ export default function Education() {
               <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 rounded-bl-lg text-sm font-semibold z-10">
                 {item.period}
               </div>
-              
+
               <div className="p-6 pt-4">
                 <div className="flex items-center gap-2 mb-3 mt-4">
                   <div className="text-3xl">{item.icon}</div>
                   <h3 className="text-primary text-xl font-bold">{item.school}</h3>
                 </div>
-                
+
                 <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-lg mb-4 text-sm font-medium">
                   {item.degree}
                 </div>
-                
+
                 <div className="flex items-center gap-2 mb-4 bg-gray-light/50 w-fit rounded-lg px-3 py-2">
                   <span className="font-semibold text-gray-dark">{item.grade.label}:</span>
                   <span className="text-primary font-bold text-lg">{item.grade.value}</span>
                 </div>
-                
+
                 <div className="flex flex-wrap gap-2">
                   {item.tags.map((tag, i) => (
                     <span key={i} className="bg-gray-light text-gray-dark px-3 py-1 rounded-full text-sm">

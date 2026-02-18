@@ -61,7 +61,7 @@ export default function About() {
 
   return (
     <section
-      className="relative min-h-screen flex items-center pt-24 pb-20 px-6 md:px-12 lg:pl-88 overflow-hidden"
+      className="relative min-h-screen flex items-center pt-24 pb-20 px-6 md:px-12 overflow-hidden"
       id="about"
       aria-label="About Bhoomil Dayani"
       itemScope

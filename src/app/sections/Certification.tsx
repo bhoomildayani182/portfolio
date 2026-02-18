@@ -18,19 +18,19 @@ export default function Certification() {
         setIsVisible(isInViewport);
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     // Initial check
     handleScroll();
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { 
+    visible: {
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.8,
         staggerChildren: 0.15
       }
@@ -39,10 +39,10 @@ export default function Certification() {
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1, 
-      transition: { duration: 0.5 } 
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5 }
     }
   };
 
@@ -178,24 +178,24 @@ export default function Certification() {
   const categories = ['all', ...new Set(certificationsData.map(cert => cert.category))];
 
   // Filter certifications based on selected category
-  const filteredCertifications = sortBy === 'all' 
-    ? certificationsData 
+  const filteredCertifications = sortBy === 'all'
+    ? certificationsData
     : certificationsData.filter(cert => cert.category === sortBy);
 
   return (
-    <section className="relative min-h-screen pt-24 py-16 px-6 md:px-12 lg:pl-80 bg-gradient-to-br from-background to-gray-light/30" id="certification">
+    <section className="relative min-h-screen pt-24 py-16 px-6 md:px-12 bg-gradient-to-br from-background to-gray-light/30" id="certification">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-60 right-10 md:right-40 w-64 h-64 bg-primary/10 rounded-full filter blur-3xl"></div>
         <div className="absolute bottom-60 right-10 md:right-40 w-72 h-72 bg-secondary/10 rounded-full filter blur-3xl"></div>
         <div className="absolute top-1/3 right-1/3 w-96 h-96 bg-accent/5 rounded-full filter blur-3xl"></div>
-        
+
         {/* Decorative shapes - right side only */}
         <div className="absolute top-1/3 right-20 w-12 h-12 bg-accent/10 rotate-45"></div>
       </div>
 
       {/* Content */}
-      <motion.div 
+      <motion.div
         className="relative z-10 max-w-7xl mx-auto"
         variants={containerVariants}
         initial="hidden"
@@ -211,7 +211,7 @@ export default function Certification() {
             A collection of professional certifications, awards, and achievements that showcase my expertise and continuous learning.
           </p>
         </motion.div>
-        
+
         {/* Filter Controls */}
         <motion.div variants={itemVariants} className="flex justify-end mb-8">
           <div className="relative w-full max-w-xs">
@@ -243,19 +243,19 @@ export default function Certification() {
             </div>
           </div>
         </motion.div>
-        
+
         {/* Certification Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCertifications.map((cert, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               variants={itemVariants}
               className="card bg-card-bg rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:-translate-y-2 hover:shadow-xl"
             >
               <div className="relative">
                 <div className="h-48 w-full bg-gray-50 flex items-center justify-center overflow-hidden">
-                  <Image 
-                    src={cert.image} 
+                  <Image
+                    src={cert.image}
                     alt={cert.title}
                     width={300}
                     height={200}
@@ -266,15 +266,15 @@ export default function Certification() {
                   {cert.provider}
                 </div>
               </div>
-              
+
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2 text-foreground">{cert.title}</h3>
                 <p className="text-gray-dark mb-6 text-sm">{cert.description}</p>
-                
+
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2">
                     {cert.badgeLink && (
-                      <a 
+                      <a
                         href={cert.badgeLink}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -286,9 +286,9 @@ export default function Certification() {
                         Badge
                       </a>
                     )}
-                    
+
                     {cert.paperLink && (
-                      <a 
+                      <a
                         href={cert.paperLink}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -301,10 +301,10 @@ export default function Certification() {
                       </a>
                     )}
                   </div>
-                  
+
                   <div>
                     {cert.detailsLink && (
-                      <a 
+                      <a
                         href={cert.detailsLink}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -316,9 +316,9 @@ export default function Certification() {
                         </svg>
                       </a>
                     )}
-                    
+
                     {cert.profileLink && (
-                      <a 
+                      <a
                         href={cert.profileLink}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -330,9 +330,9 @@ export default function Certification() {
                         </svg>
                       </a>
                     )}
-                    
+
                     {cert.certificateLink && (
-                      <a 
+                      <a
                         href={cert.certificateLink}
                         target="_blank"
                         rel="noopener noreferrer"

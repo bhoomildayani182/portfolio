@@ -150,7 +150,7 @@ export default function Experience() {
   ];
 
   return (
-    <section className="relative min-h-screen pt-24 py-16 px-6 md:px-12 lg:pl-80 bg-gradient-to-br from-gray-light/30 to-background" id="experience">
+    <section className="relative min-h-screen pt-24 py-16 px-6 md:px-12 bg-gradient-to-br from-gray-light/30 to-background" id="experience">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-40 right-20 w-72 h-72 bg-secondary/10 rounded-full filter blur-3xl"></div>
