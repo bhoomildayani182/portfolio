@@ -85,7 +85,7 @@ export default function Contact() {
       formDataObj.append('_template', 'table');
 
       // Send form data without redirecting
-      const response = await fetch('https://formsubmit.co/ajax/bhoomildayani05@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/hello@bhoomild.com', {
         method: 'POST',
         body: formDataObj
       });
@@ -162,7 +162,7 @@ export default function Contact() {
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                   </svg>
-                  There was an error sending your message. Please try emailing me directly at bhoomildayani05@gmail.com.
+                  There was an error sending your message. Please try emailing me directly at hello@bhoomild.com.
                 </div>
               )}
 
@@ -264,7 +264,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold mb-1">Email</h4>
-                    <a href="mailto:bhoomildayani05@gmail.com" className="text-gray-dark hover:text-primary transition-colors duration-300">bhoomildayani05@gmail.com</a>
+                    <a href="mailto:hello@bhoomild.com" className="text-gray-dark hover:text-primary transition-colors duration-300">hello@bhoomild.com</a>
                   </div>
                 </div>
 

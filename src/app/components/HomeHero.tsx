@@ -7,15 +7,52 @@ import { motion } from 'framer-motion';
 const roles = [
     'DevOps Engineer',
     'Cloud Engineer',
-    'CI/CD Specialist',
-    'DevSecOps Engineer',
+    'Automation',
+    'DevSecOps',
     'Kubernetes Expert',
 ];
 
 const stats = [
-    { value: '2+', label: 'Years Experience' },
-    { value: '15+', label: 'Projects Completed' },
-    { value: '3', label: 'Certifications' },
+    {
+        value: '20+',
+        label: 'Projects Completed',
+        sub: 'Successfully delivered',
+        icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clipRule="evenodd" />
+            </svg>
+        ),
+    },
+    {
+        value: '6+',
+        label: 'Happy Clients',
+        sub: 'Worldwide',
+        icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                <path d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
+            </svg>
+        ),
+    },
+    {
+        value: '2-3',
+        label: 'Weeks Average',
+        sub: 'Delivery time',
+        icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z" clipRule="evenodd" />
+            </svg>
+        ),
+    },
+    {
+        value: '100%',
+        label: 'Client Satisfaction',
+        sub: 'Rating',
+        icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                <path fillRule="evenodd" d="M5.166 2.621v.858c-1.035.148-2.059.33-3.071.543a.75.75 0 00-.584.859 6.753 6.753 0 006.138 5.6 6.73 6.73 0 002.743 1.346A6.707 6.707 0 019.279 15H8.54c-1.036 0-1.875.84-1.875 1.875V19.5h-.75a2.25 2.25 0 000 4.5h7.5a2.25 2.25 0 000-4.5h-.75v-2.625c0-1.036-.84-1.875-1.875-1.875h-.739a6.706 6.706 0 01-1.112-3.173 6.73 6.73 0 002.743-1.347 6.753 6.753 0 006.139-5.6.75.75 0 00-.585-.858 47.077 47.077 0 00-3.07-.543V2.62a.75.75 0 00-.658-.744 49.798 49.798 0 00-6.093-.377.75.75 0 00-.657.744zm0 2.629c0 1.196.312 2.32.857 3.294A5.266 5.266 0 013.16 5.337a45.6 45.6 0 012.006-.343v.256zm13.5 0v-.256c.674.1 1.343.214 2.006.343a5.265 5.265 0 01-2.863 3.207 6.72 6.72 0 00.857-3.294z" clipRule="evenodd" />
+            </svg>
+        ),
+    },
 ];
 
 export default function HomeHero() {
@@ -96,10 +133,10 @@ export default function HomeHero() {
                             <div className="flex flex-wrap gap-4">
                                 <button
                                     type="button"
-                                    onClick={() => scrollTo('about')}
+                                    onClick={() => scrollTo('projects')}
                                     className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-white font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:bg-primary-dark transition-all duration-300"
                                 >
-                                    View Portfolio
+                                    View Selected Work
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true">
                                         <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
                                     </svg>
@@ -219,12 +256,21 @@ export default function HomeHero() {
                 className="relative z-10 border-t border-white/5"
                 aria-label="Career statistics"
             >
-                <div className="max-w-7xl mx-auto px-6 md:px-12 py-6">
-                    <div className="grid grid-cols-3 divide-x divide-white/5">
+                <div className="max-w-7xl mx-auto px-6 md:px-12 py-8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-white/5">
                         {stats.map((stat) => (
-                            <div key={stat.label} className="flex flex-col items-center py-2">
-                                <span className="text-2xl md:text-3xl font-bold gradient-text">{stat.value}</span>
-                                <span className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mt-1">{stat.label}</span>
+                            <div key={stat.label} className="flex flex-col items-center gap-3 py-2">
+                                {/* Icon circle */}
+                                <div className="w-14 h-14 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary">
+                                    {stat.icon}
+                                </div>
+                                {/* Value */}
+                                <span className="text-3xl md:text-4xl font-extrabold gradient-text leading-none">{stat.value}</span>
+                                {/* Label */}
+                                <div className="text-center">
+                                    <p className="text-sm font-bold text-white">{stat.label}</p>
+                                    <p className="text-xs text-gray-500 mt-0.5">{stat.sub}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
