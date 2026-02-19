@@ -1,5 +1,3 @@
-'use client';
-
 import TopNav from './components/TopNav';
 import HomeHero from './components/HomeHero';
 import About from './sections/About';

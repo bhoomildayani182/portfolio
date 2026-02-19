@@ -85,9 +85,14 @@ export const metadata: Metadata = {
     ],
   },
 
-  // ─── Verification (add tokens after submitting to Search Console) ────────
+  // ─── Google Search Console Verification ──────────────────────────────────
+  // Steps to get your token:
+  // 1. Go to https://search.google.com/search-console
+  // 2. Add property → URL prefix → https://bhoomildayani.dev
+  // 3. Choose "HTML tag" verification method
+  // 4. Copy the content value from the meta tag and paste it below
   verification: {
-    google: "REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_TOKEN",
+    google: "OYD67jJrKrcpdKlC2XllmvO61pm51Qnwi18oTDSdbTo",
     // bing: "REPLACE_WITH_BING_WEBMASTER_TOKEN",
   },
 
@@ -111,6 +116,8 @@ const personSchema = {
   "@type": "Person",
   "@id": `${SITE_URL}/#person`,
   name: PERSON.name,
+  givenName: "Bhoomil",
+  familyName: "Dayani",
   jobTitle: PERSON.jobTitle,
   description: SEO.description,
   url: SITE_URL,
@@ -139,6 +146,7 @@ const personSchema = {
     "Kubernetes",
     "Docker",
     "AWS",
+    "Microsoft Azure",
     "Terraform",
     "Ansible",
     "CI/CD Pipelines",
@@ -157,6 +165,8 @@ const personSchema = {
     "Cloud Security",
     "Infrastructure as Code",
     "SOC 2 Compliance",
+    "Linux",
+    "Bash Scripting",
   ],
   hasCredential: [
     {
@@ -166,6 +176,7 @@ const personSchema = {
       recognizedBy: {
         "@type": "Organization",
         name: "Amazon Web Services",
+        url: "https://aws.amazon.com",
       },
     },
     {
@@ -175,6 +186,7 @@ const personSchema = {
       recognizedBy: {
         "@type": "Organization",
         name: "Microsoft",
+        url: "https://microsoft.com",
       },
     },
     {
@@ -184,6 +196,7 @@ const personSchema = {
       recognizedBy: {
         "@type": "Organization",
         name: "IBM",
+        url: "https://ibm.com",
       },
     },
   ],
@@ -205,6 +218,54 @@ const websiteSchema = {
       urlTemplate: `${SITE_URL}/?q={search_term_string}`,
     },
     "query-input": "required name=search_term_string",
+  },
+};
+
+const profilePageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": `${SITE_URL}/#profilepage`,
+  url: SITE_URL,
+  name: `${PERSON.name} — DevOps & Cloud Engineer Portfolio`,
+  description: SEO.description,
+  inLanguage: "en-IN",
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  about: { "@id": `${SITE_URL}/#person` },
+  dateModified: new Date().toISOString(),
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "About",
+        item: `${SITE_URL}/#about`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Experience",
+        item: `${SITE_URL}/#experience`,
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: "Projects",
+        item: `${SITE_URL}/#projects`,
+      },
+      {
+        "@type": "ListItem",
+        position: 5,
+        name: "Contact",
+        item: `${SITE_URL}/#contact`,
+      },
+    ],
   },
 };
 
@@ -238,6 +299,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
         />
       </head>
       <body className={`${inter.variable} antialiased`}>{children}</body>
