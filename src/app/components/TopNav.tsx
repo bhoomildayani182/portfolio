@@ -10,7 +10,7 @@ const navLinks = [
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
     { label: 'Contact', href: '#contact' },
-    { label: 'Blog', href: 'https://bhoomildayaniblog.netlify.app', external: true },
+    { label: 'Blog', href: 'https://blog.bhoomild.com', external: true },
 ];
 
 export default function TopNav() {
@@ -37,8 +37,8 @@ export default function TopNav() {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                    ? 'bg-[#0a0f1e]/90 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/30'
-                    : 'bg-transparent'
+                ? 'bg-[#0a0f1e]/90 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/30'
+                : 'bg-transparent'
                 }`}
             role="banner"
         >
